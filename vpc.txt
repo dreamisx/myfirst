@@ -1,0 +1,18 @@
+﻿Microsoft Virtual PC也是可以使用的但需要修改批处理，不然会提示错误
+
+the virtual machine monitor driver required by vitual pc is missing, please reinstall virual pc and try again
+
+由Virtual PC提供的虚拟机监视器的驱动程序丢失,请重新安装virtual PC，然后再试一次
+
+现在我把批处理贴出来，请大侠修改一下（xp替换成win7的变量即可）
+
+绿化.bat ==>
+
+echo off
+COPY VMM.SYS %SystemRoot%\SYSTEM32\drivers\VMM.SYS /Y
+::regsvr32 /s msxml6.dll
+regsvr32 /s msxml4.dll
+regedit /s vmm.reg
+cd .\Utility
+.\install.bat
+echo on
